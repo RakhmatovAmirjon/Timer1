@@ -3,35 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      text-align: center;
-      font-family: Arial, sans-serif;
-    }
-
-    #timer {
-      font-size: 2em;
-      margin: 20px;
-    }
-
-    button {
-      font-size: 1em;
-      margin: 10px;
-      padding: 5px 10px;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <title>Timer</title>
 </head>
 <body>
 
-<div id="timer">00:00:20</div>
-<button onclick="startTimer()">Start</button>
-<button onclick="pauseTimer()">Pause</button>
-<button onclick="resetTimer()">Reset</button>
+  <div id="shell">
+<div id="timer">00:00:10</div>
+<button id="start">Start</button>
+<button id="pause">Pause</button>
+<button id="reset">Reset</button>   
+  </div>
 
-<script>
-  
+
+
+<video id="video" autoplay muted>
+  <source src="videos/vidi.mp4" type="video/mp4">
+</video>
+
+<script src="index.js">
 </script>
-
 </body>
 </html>
