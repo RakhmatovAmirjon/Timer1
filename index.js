@@ -1,32 +1,42 @@
-let timerInterval
+let timerInterval;
 
-let totalSeconds = 20
+let totalSeconds = 10
 
-  function startTimer() {
-    timerInterval = ustanovka_interval(obnova_interval, 1000)
+let start = document.getElementById("start")
+let pause = document.getElementById("pause")
+let reset = document.getElementById("reset")
+
+start.onclick = () => {
+  timerInterval = setInterval(updateTimer,500)
+  start.disabled = true
+  pause.disabled = false
+}
+
+pause.onclick = () => {
+  clearInterval(timerInterval)
+  pause.disabled = true
+  start.disabled = false
+}
+
+reset.onclick = () => {
+  clearInterval(timerInterval)
+  totalSeconds = 10
+  start.disabled = false
+  updateTimer()
   }
 
-  function pauseTimer() {
-    ochistka_interval(timerInterval)
-  }
-
-  function resetTimer() {
-    ochistka_interval(timerInterval)
-    totalSeconds = 20
-    obnova_interval()
-  }
-
-  function obnova_interval() {
+  function updateTimer() {
     const hours = Math.floor(totalSeconds / 3600)
     const minutes = Math.floor((totalSeconds % 3600) / 60)
     const seconds = totalSeconds % 60
 
-    const formatirovaniyTime = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`
-    document.getElementById('timer').innerText = formatirovaniyTime
+    const formattedTime = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`
+    document.getElementById('timer').innerText = formattedTime
 
     if (totalSeconds === 0) {
-      ochistka_interval(timerInterval)
-      alert("Ваше время вышло")
+      clearInterval(timerInterval)
+      video.style.display = "block"
+      shell.style.display = "none"
     } else {
       totalSeconds--
     }
